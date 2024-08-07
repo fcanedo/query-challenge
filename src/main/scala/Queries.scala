@@ -1,4 +1,5 @@
-import slick.jdbc.H2Profile.api._
+import slick.jdbc.PostgresProfile
+import slick.jdbc.PostgresProfile.api._
 
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration.Duration
@@ -16,7 +17,7 @@ object Queries extends App {
   import Products.products
   import Users.users
 
-  val db = Database.forConfig("postgres")
+  val db: PostgresProfile.backend.Database = Database.forConfig("postgres")
   try {
 
     val q1: Query[((Users, Orders), Products), ((User, Order), Product), Seq] = users join orders on (_.id === _.userId) join products on (_._2.productId === _.id)

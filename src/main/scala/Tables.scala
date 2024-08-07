@@ -1,4 +1,4 @@
-import slick.jdbc.H2Profile.api._
+import slick.jdbc.PostgresProfile.api._
 
 import java.sql.Date
 
